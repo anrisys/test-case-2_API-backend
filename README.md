@@ -42,6 +42,77 @@ A RESTful API for managing items built with Express.js, TypeScript, and Prisma.
 GET /api/items/data
 ```
 
+**Success Reponse:**
+
+```
+{
+  "status": "success",
+  "code": "retrieve_all_items",
+  "message": "Successful retrieve all items",
+  "statusCode": 200,
+  "data": [
+    {
+      "id": 1,
+      "name": "Sample Item",
+      "description": "Item description",
+      "price": 9.99,
+      "createdAt": "2023-01-01T00:00:00.000Z",
+      "updatedAt": "2023-01-01T00:00:00.000Z"
+    }
+  ]
+}
+```
+
+### Create Item
+
+**Request:**
+
+```
+POST /api/items/create
+Content-Type: application/json
+
+{
+  "name": "New Item",
+  "description": "New description",
+  "price": 19.99
+}
+```
+
+**Success Response (201)**
+
+```
+{
+  "status": "success",
+  "code": "successful_create_item",
+  "message": "Successful create new item",
+  "statusCode": 201,
+  "data": {
+    "id": 2,
+    "name": "New Item",
+    "description": "New description",
+    "price": 19.99,
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z"
+  }
+}
+```
+
+**Error Response**
+
+```
+{
+  "error": {
+    "type": "BusinessLogic",
+    "message": "Item not found",
+    "code": "item_not_found",
+    "statusCode": 404,
+    "details": {
+      "itemId": 999
+    }
+  }
+}
+```
+
 ## Prerequisites
 
 - Node.js (v18+ recommended)
